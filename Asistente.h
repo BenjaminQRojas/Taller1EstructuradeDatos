@@ -7,6 +7,7 @@
 class Asistente
 {
     private:
+        //atributos
         std::string nombre;
         int edad;
         std::string email;
