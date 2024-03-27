@@ -1,8 +1,12 @@
 # Taller1EstructuradeDatos
-taller 1 de estructura de datos en C++
-Integrante: Benjamin Eduardo Quiroz Rojas 
+Taller 1 de estructura de datos en C++
+Integrante 1: Benjamin Eduardo Quiroz Rojas 
 RUT: 19.956.115-4 
 Correo Institucional: benjamin.quiroz@alumnos.ucn.cl
+Integrante 2: Fabricha Francinny Ramirez Araya
+RUT: 20.990.386-5
+Correo Institucional: fabricha.ramirez@alumnos.ucn.cl
+
 
 g++ main.cpp -o main
 
