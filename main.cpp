@@ -2,6 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Evento.h"
+#include "Asistente.h"
+
+sing namespace std;
+
+// DECLARACION DE FUNCIONES
+// =========== EVENTO ============//
+// Evento crearEvento();
+
+// =========== Asistente =============//
+//Asistente registrarAsistente();
+
+
 /*
     REQUERIMIENTOS
     1.- crear eventos
@@ -31,7 +43,7 @@ int main(){
     cout << "1.Crear eventos" << endl;
     cout << "2.Registrar asistentes" << endl;
     cout << "3.Mostrar asistentes" << endl;
-    cout << "4.Generar informe << endl;
+    cout << "4.Generar informe" << endl;
     cout << "5.salir" << endl;
 
     cout << "Ingrese una opcion:" << endl;
