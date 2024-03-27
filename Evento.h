@@ -2,6 +2,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+//#include "Asistente.h"
+// #include <vector>
+
+using namespace std;
 
 class Evento
 {
@@ -11,6 +15,7 @@ class Evento
         int duracion;
         std::string ubicacion;
         std::string tema;
+        //std:: vector<Asistente*> ListAsistente;
     public:
         //constructor
         Evento(std::string,std::string,int,std::string,std::string);
@@ -26,4 +31,6 @@ class Evento
         void setDuracion(int duracion);
         void setUbicacion(std::string ubicacion);
         void setTema(std::string tema);
+
+        string toString();
 };
