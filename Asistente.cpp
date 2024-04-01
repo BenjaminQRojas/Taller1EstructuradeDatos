@@ -3,12 +3,12 @@
 Asistente::Asistente(std::string nombre,
                      int edad,
                      std::string email,
-                     std::string contraseña)
+                     std::string password)
 {
     this -> nombre = nombre;
     this -> edad = edad;
     this -> email = email;
-    this -> contraseña = contraseña;
+    this -> password = password;
 };
 
 //getters
@@ -26,9 +26,9 @@ std:: string Asistente::getEmail()
 {
     return email;
 };
-std:: string Asistente:: getContraseña()
+std:: string Asistente:: getPassword()
 {
-  return contraseña;
+  return password;
 };
 
 //setters
@@ -44,9 +44,9 @@ void Asistente::setEmail(std::string email)
 {
     this -> email = email;
 };
-void Asistente::setContraseña(std::string contraseña)
+void Asistente::setPassword(std::string password)
 {
-    this -> contraseña = contraseña;
+    this -> password = password;
 };
 //listar asistente
 //string Asistente:: toString(){}

@@ -1,15 +1,104 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
+#include <vector>
 #include "Evento.h"
 #include "Asistente.h"
 
-sing namespace std;
+//using namespace std;
 
 // DECLARACION DE FUNCIONES
 // =========== EVENTO ============//
 // Evento crearEvento();
 
+//leer archivo txt
+int leerArchivoEventos(/*std::vector<Evento> eventos*/){
+    // Abre el archivo en modo de lectura
+    std::ifstream archivo("Eventos.txt");
+
+    // Verifica si se pudo abrir correctamente
+    if (!archivo.is_open()) {
+        std::cerr << "El archivo no existe. Creando el archivo Eventos.txt" << std::endl;
+        
+        // Intenta crear el archivo
+        std::ofstream nuevoArchivo("Eventos.txt");
+        
+        // Verifica si se pudo crear correctamente
+        if (!nuevoArchivo.is_open()) {
+            std::cerr << "Error al crear el archivo." << std::endl;
+            return 1;
+        }
+        
+        // Cierra el nuevo archivo
+        nuevoArchivo.close();
+        
+        // Intenta abrir el archivo nuevamente en modo de lectura
+        archivo.open("Eventos.txt");
+        
+        // Verifica si se pudo abrir correctamente
+        if (!archivo.is_open()) {
+            std::cerr << "Error al abrir el archivo después de crearlo." << std::endl;
+            return 1;
+        }
+    }
+    /*
+    // El archivo está abierto correctamente, ahora puedes leer su contenido
+    std::string linea;
+
+    // Lee el archivo línea por línea
+    while (std::getline(archivo, linea)) {
+        // Procesa cada línea como desees
+        std::cout << linea << std::endl;
+    }
+    */
+    // Cierra el archivo
+    archivo.close();
+    
+}
+
+int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
+    // Abre el archivo en modo de lectura
+    std::ifstream archivo("Asistentes.txt");
+
+    // Verifica si se pudo abrir correctamente
+    if (!archivo.is_open()) {
+        std::cerr << "El archivo no existe. Creando el archivo Asistentes.txt" << std::endl;
+        
+        // Intenta crear el archivo
+        std::ofstream nuevoArchivo("Asistentes.txt");
+        
+        // Verifica si se pudo crear correctamente
+        if (!nuevoArchivo.is_open()) {
+            std::cerr << "Error al crear el archivo." << std::endl;
+            return 1;
+        }
+        
+        // Cierra el nuevo archivo
+        nuevoArchivo.close();
+        
+        // Intenta abrir el archivo nuevamente en modo de lectura
+        archivo.open("Asistentes.txt");
+        
+        // Verifica si se pudo abrir correctamente
+        if (!archivo.is_open()) {
+            std::cerr << "Error al abrir el archivo después de crearlo." << std::endl;
+            return 1;
+        }
+    }
+    /*
+    // El archivo está abierto correctamente, ahora puedes leer su contenido
+    std::string linea;
+
+    // Lee el archivo línea por línea
+    while (std::getline(archivo, linea)) {
+        // Procesa cada línea como desees
+        std::cout << linea << std::endl;
+    }
+    */
+    // Cierra el archivo
+    archivo.close();
+}
 // =========== Asistente =============//
 //Asistente registrarAsistente();
 
@@ -36,6 +125,7 @@ sing namespace std;
 int main(){
     /*Evento p1("a","b",2,"c","d");
     std::cout<<p1.getNombre()<<std::endl;*/
+    /*
     return 0;
     //Interfaz de usuario
     int opcion = 0;
@@ -74,9 +164,9 @@ int main(){
         cout << "Saliendo del programa..." << endl;
         break;
     }
-    
-    
-    
+    */
+    int a = leerArchivoEventos();
+    int b = leerArchivoAsistentes();
     
 }
 

@@ -11,7 +11,7 @@ class Asistente
         std::string nombre;
         int edad;
         std::string email;
-        std::string contraseña;
+        std::string password;
     public:
         //constructor  
         Asistente(std::string, int, std::string, std::string);
@@ -19,10 +19,10 @@ class Asistente
         std::string getNombre();
         int getEdad();
         std::string getEmail();
-        std::string getContraseña();
+        std::string getPassword();
         //setters
         void setNombre(std::string nombre);
         void setEdad(int edad);
         void setEmail(std::string email);
-        void setContraseña(std::string contraseña);
+        void setPassword(std::string password);
 };
