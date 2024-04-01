@@ -10,7 +10,21 @@
 
 // DECLARACION DE FUNCIONES
 // =========== EVENTO ============//
-// Evento crearEvento();
+Evento* crearEvento(std::string nombre, 
+                    std::string tipo, 
+                    int duracion, 
+                    std::string ubicacion,
+                    std::string tema){
+    return new Evento(nombre,tipo,duracion,ubicacion,tema);
+}
+
+Asistente* crearAsistente(std::string nombre,
+                          int edad, 
+                          std::string email, 
+                          std::string password, 
+                          std::string ocupacion){ 
+    return new Asistente(nombre,edad,email,password,ocupacion);
+}
 
 //leer archivo txt
 int leerArchivoEventos(/*std::vector<Evento> eventos*/){

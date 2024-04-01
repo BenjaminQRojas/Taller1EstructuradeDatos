@@ -4,13 +4,25 @@ Evento::Evento(std::string nombre,
                std::string tipo, 
                int duracion, 
                std::string ubicacion, 
-               std::string tema)
+               std::string tema):listAsistente()
 {
     this -> nombre = nombre;
     this -> tipo = tipo;
     this -> duracion = duracion;
     this -> ubicacion = ubicacion;
     this -> tema = tema;
+};
+
+//metodos
+bool Evento::agregarAsistente(Asistente* asistente)
+{
+    try {
+        listAsistente.push_back(asistente);
+        return true; 
+    } catch (const std::bad_alloc& e) {
+        std::cerr << "Error: No se pudo agregar el asistente debido a la falta de memoria." << std::endl;
+        return false; 
+    }
 };
 
 //getters
