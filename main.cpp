@@ -137,6 +137,9 @@ int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
         quitar includes que no se usaran
 */
 int main(){
+  */vector<Evento*> eventos; // Vector para almacenar los eventos creados
+    vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
+  /*
     /*Evento p1("a","b",2,"c","d");
     std::cout<<p1.getNombre()<<std::endl;*/
     /*
@@ -163,10 +166,10 @@ int main(){
 
     switch (opcion) {
     case 1:
-       //crearEvednto();
+       //crearEvento(eventos);
         break;
     case 2:
-       //registrarAsistentes();
+       //registrarAsistentes(asistentes);
         break;
     case 3:
        //ListarAsistente();
@@ -183,4 +186,45 @@ int main(){
     int b = leerArchivoAsistentes();
     
 }
+*/
+  Evento *crearEvento(vector<Evento*>& eventos){
+  string nombre,tipo,ubicacion,tema;
+  int duracion;
+
+cout << "Ingresar el nombre del evento:" << endl;
+cin >> nombre;
+cout << "Ingresar el tipo de evento:" << endl;
+cin >> tipo;
+cout << "Ingresar la ubicacion del evento:" << endl;
+cin>> ubicacion;
+cout << "Ingresar el tema del evento:" << endl;
+cin>> tema;
+cout << "Ingresar la duracion del evento:" << endl;
+cin >> duracion;
+
+// Crear un nuevo evento y lo agrega al vector de eventos
+Evento* nuevoEvento = new Evento(nombre,tipo,duracion,ubicacion,tema);
+eventos.push_back(nuevoEvento);
+}
+/*
+*/
+Asistente *crearAsistente(vector<Asistente*>& asistentes){
+string nombre,email,password,ocupacion;
+int edad;
+cout << "Ingresar el nombre del asistente:" << endl;
+cin >> nombre;
+cout << "Ingresar el email del asistente:" << endl;
+cin >> email;
+cout << "Ingresar la contraseña del asistente:" << endl;
+cin>> password;
+cout << "Ingresar la ocupacion del asistente:" << endl;
+cin>> ocupacion;
+cout << "Ingresar la edad del asistente:" << endl;
+cin >> edad;
+
+// Registra un nuevo asistente y lo agrega al vector asistente
+Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
+ asistentes.push_back(nuevoAsistente);
+}
+/*
 
