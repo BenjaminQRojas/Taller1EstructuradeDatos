@@ -137,7 +137,7 @@ int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
         quitar includes que no se usaran
 */
 int main(){
-  */vector<Evento*> eventos; // Vector para almacenar los eventos creados
+    vector<Evento*> eventos; // Vector para almacenar los eventos creados
     vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
   /*
     /*Evento p1("a","b",2,"c","d");
@@ -186,15 +186,15 @@ int main(){
     int b = leerArchivoAsistentes();
     
 }
-*/
+
   Evento *crearEvento(vector<Evento*>& eventos){
-  string nombre,tipo,ubicacion,tema;
+  string nombre,codigo,ubicacion,tema;
   int duracion;
 
 cout << "Ingresar el nombre del evento:" << endl;
 cin >> nombre;
-cout << "Ingresar el tipo de evento:" << endl;
-cin >> tipo;
+cout << "Ingresar el codigo de evento:" << endl;
+cin >> codigo;
 cout << "Ingresar la ubicacion del evento:" << endl;
 cin>> ubicacion;
 cout << "Ingresar el tema del evento:" << endl;
@@ -203,7 +203,7 @@ cout << "Ingresar la duracion del evento:" << endl;
 cin >> duracion;
 
 // Crear un nuevo evento y lo agrega al vector de eventos
-Evento* nuevoEvento = new Evento(nombre,tipo,duracion,ubicacion,tema);
+Evento* nuevoEvento = new Evento(nombre,codigo,duracion,ubicacion,tema);
 eventos.push_back(nuevoEvento);
 }
 /*
@@ -226,5 +226,5 @@ cin >> edad;
 Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
  asistentes.push_back(nuevoAsistente);
 }
-/*
+
 

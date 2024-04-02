@@ -1,0 +1,10 @@
+María,28,maria28@example.com,pass123,Profesional
+Juan,35,juan35@example.com,password,Estudiante
+Laura,42,laura42@example.com,123456,Profesional
+Carlos,31,carlos31@example.com,securepass,Profesional
+Ana,25,ana25@example.com,abc123,Estudiante
+Roberto,39,roberto39@example.com,letmein123,Profesional
+Sofía,29,sofia29@example.com,pass1234,Estudiante
+Javier,33,javier33@example.com,securepassword,Profesional
+Carmen,37,carmen37@example.com,qwerty123,Profesional
+Daniel,30,daniel30@example.com,1234567890,Estudiante
