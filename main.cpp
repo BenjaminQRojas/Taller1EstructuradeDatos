@@ -172,10 +172,10 @@ int main(){
        //registrarAsistentes(asistentes);
         break;
     case 3:
-       //ListarAsistente();
+       //ListarAsistente(asistentes);
         break;
     case 4:
-        //informe();
+        //informe(eventos,asistentes);
         break;
     case 5:
         cout << "Saliendo del programa..." << endl;
@@ -187,10 +187,10 @@ int main(){
     
 }
 
-  Evento *crearEvento(vector<Evento*>& eventos){
-  string nombre,codigo,ubicacion,tema;
-  int duracion;
-
+Evento *crearEvento(vector<Evento*>& eventos){
+string nombre,codigo,ubicacion,tema;
+int duracion;
+cout<< "****** Crear Evento ******" << endl;
 cout << "Ingresar el nombre del evento:" << endl;
 cin >> nombre;
 cout << "Ingresar el codigo de evento:" << endl;
@@ -211,6 +211,7 @@ eventos.push_back(nuevoEvento);
 Asistente *crearAsistente(vector<Asistente*>& asistentes){
 string nombre,email,password,ocupacion;
 int edad;
+cout<< "****** Crear Asistente ******" << endl;
 cout << "Ingresar el nombre del asistente:" << endl;
 cin >> nombre;
 cout << "Ingresar el email del asistente:" << endl;
@@ -226,5 +227,50 @@ cin >> edad;
 Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
  asistentes.push_back(nuevoAsistente);
 }
+
+void listarAsistentes(const vector<Asistente*>& asistentes){
+  cout << "****** Lista de Asistentes ******" << endl;
+  // Interara sobre el vector de asistente
+  for(const auto& asistente: asistentes){
+    cout << asistente -> toString() << endl;
+  }
+}
+
+void listarEvento(const vector<Evento*>& eventos){
+  for(const auto& evento: eventos){
+    cout << evento -> toString() << endl;
+  }
+}
+
+void CalcularEdad(const vector<Asistente*>& asistentes){
+  //variable 
+  int edadPromedio = 0; 
+  for(const auto& asistente : asistentes){
+    edadPromedio += asistente -> getEdad();
+  }
+  // calcula la edad si exiten asistentes, si es diferente a vacio.
+  if(!asistentes.empty()){
+    edadPromedio /= asistentes.size();
+    cout << "Edad promedio de los asistentes: " << edadPromedio << "años" << endl;
+  }else{
+    cout << "No hay asistentes registrados" << endl;
+}
+
+void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
+  cout << "****** Informe ******" << endl;
+  //mostra la cantidad de eventos
+  cout << "Cantidad de eventos programados: " <<eventos.size() << endl;
+  //mostra la lista de eventos que existen
+  cout << "Lista de eventos programados: "  << endl;
+  listarEvento(eventos);
+  // mostrar la cantidad de asistentes registrados
+  cout << "Cantidad total de asistentes registrados: " << asistentes.size() << endl;
+  // mostrar la edad promedio 
+  CalcularEdad(asistentes);
+  //mostrar la ocupacion mas comun
+  cout << "Ocupacion mas comun: " << endl;
+  
+}
+
 
 
