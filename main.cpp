@@ -252,6 +252,34 @@ void CalcularEdad(const vector<Asistente*>& asistentes){
     }
 }
 
+string ocupacionComun(const vector<Asistente*>& asistentes){
+    //si asistente esta vacio imprime no hay.
+    if(asistentes.empty()){
+        return "No hay asistentes registrados" ;
+    }
+    //variables
+    String ocupacionComun;
+    int maxOcurrencias = 0;
+    
+//Interamos sobre los asistenes que existan y contamos de forma manual las repeticiones o ocurrencias 
+// de las ocupaciones 
+    for(const auto& asistente: asistentes){
+        string ocupacion = asistente -> getOcupacion();
+        int contador = 1;
+//contabilizar las veces que aparece la ocupacion actual con el resto de asistente
+        for(const auto& asistente1: asistentes){
+            if(asistente1 != asistente && asistente1 -> getOcupacion() == ocupacion){
+                contador++;
+            }
+        }
+        //se actualiza la ocupacion más comun si encuentra una con mas ocurrencias, o la que mas se repite
+        if(contador > maxOcurrencias){
+            ocupacionComun = ocupacion;
+            maxOcurrencias = contador;
+        }
+    }
+    return ocupacionComun;   
+}
 
 void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
     std::cout << "****** Informe ******" << std::endl;
@@ -266,7 +294,7 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
     CalcularEdad(asistentes);
     //mostrar la ocupacion mas comun
     std::cout << "Ocupacion mas comun: " << std::endl;
-    
+    ocupacionComun(asistentes);
 }
 
 /**
