@@ -193,50 +193,6 @@ int leerArchivoAsistentes(std::vector<Asistente*> asistentes){
 }
 
 /**
- * Interfaz del usuario
-*/
-void interfazUsuario(const vector<Asistente*>& asistentes, const vector<Evento*> eventos){
-    int opcion = 0;
-    cout << "Bienvenido" << endl;
-    cout << "1.Crear eventos" << endl;
-    cout << "2.Registrar asistentes" << endl;
-    cout << "3.Mostrar asistentes" << endl;
-    cout << "4.Generar informe" << endl;
-    cout << "5.salir" << endl;
-
-    cout << "Ingrese una opcion:" << endl;
-    cin >> opcion;
-    
-    while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5){
-        cin.clear();
-
-        cout << "opcion ingresada no valida" << endl;
-        cout << "Ingrese una opcion:" << endl;
-        cin >> opcion;
-    }
-
-    switch (opcion) {
-    case 1:
-        //crearEvento(eventos);
-        break;
-    case 2:
-        //registrarAsistentes(asistentes);
-        break;
-    case 3:
-        //ListarAsistente(asistentes);
-        listarEvento(eventos);
-        break;
-    case 4:
-        //informe(eventos,asistentes);
-        break;
-    case 5:
-        cout << "Saliendo del programa..." << endl;
-        break;
-    }
-    
-}
-
-/**
  * funcion para mostrar todos los asistentes registrados
 */
 void listarAsistentes(const vector<Asistente*>& asistentes){
@@ -288,6 +244,50 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
     CalcularEdad(asistentes);
     //mostrar la ocupacion mas comun
     cout << "Ocupacion mas comun: " << endl;
+    
+}
+
+/**
+ * Interfaz del usuario
+*/
+void interfazUsuario(const vector<Asistente*>& asistentes, const vector<Evento*> eventos){
+    int opcion = 0;
+    cout << "Bienvenido" << endl;
+    cout << "1.Crear eventos" << endl;
+    cout << "2.Registrar asistentes" << endl;
+    cout << "3.Mostrar asistentes" << endl;
+    cout << "4.Generar informe" << endl;
+    cout << "5.salir" << endl;
+
+    cout << "Ingrese una opcion:" << endl;
+    cin >> opcion;
+    
+    while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5){
+        cin.clear();
+
+        cout << "opcion ingresada no valida" << endl;
+        cout << "Ingrese una opcion:" << endl;
+        cin >> opcion;
+    }
+
+    switch (opcion) {
+    case 1:
+        //crearEvento(eventos);
+        break;
+    case 2:
+        //registrarAsistentes(asistentes);
+        break;
+    case 3:
+        //ListarAsistente(asistentes);
+        listarEvento(eventos);
+        break;
+    case 4:
+        //informe(eventos,asistentes);
+        break;
+    case 5:
+        cout << "Saliendo del programa..." << endl;
+        break;
+    }
     
 }
 
