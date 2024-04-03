@@ -295,6 +295,7 @@ int main(){
     vector<Evento*> eventos; // Vector para almacenar los eventos creados
     vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
     leerArchivoAsistentes(asistentes);
+    leerArchivoEventos(eventos);
     //Interfaz de usuario
     interfazUsuario(asistentes,eventos);
     return 0;
