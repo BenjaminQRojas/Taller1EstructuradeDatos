@@ -8,7 +8,6 @@
 #include "Evento.h"
 #include "Asistente.h"
 
-using namespace std;
 /*
     REQUERIMIENTOS
     1.- crear eventos
@@ -38,19 +37,19 @@ Evento* crearEvento(std::string nombre,
  * funcion para crear un evento mediante input
 */
 void crearEvento(vector<Evento*>& eventos){
-    string nombre,ubicacion,tema;
+    std::string nombre,ubicacion,tema;
     int codigo,duracion;
-    cout<< "****** Crear Evento ******" << endl;
-    cout << "Ingresar el nombre del evento:" << endl;
-    cin >> nombre;
-    cout << "Ingresar el codigo de evento:" << endl;
-    cin >> codigo;
-    cout << "Ingresar la ubicacion del evento:" << endl;
-    cin>> ubicacion;
-    cout << "Ingresar el tema del evento:" << endl;
-    cin>> tema;
-    cout << "Ingresar la duracion del evento:" << endl;
-    cin >> duracion;
+    std::cout<< "****** Crear Evento ******" << std::endl;
+    std::cout << "Ingresar el nombre del evento:" << std::endl;
+    std::cin >> nombre;
+    std::cout << "Ingresar el codigo de evento:" << std::endl;
+    std::cin >> codigo;
+    std::cout << "Ingresar la ubicacion del evento:" << std::endl;
+    std::cin>> ubicacion;
+    std::cout << "Ingresar el tema del evento:" << std::endl;
+    std::cin>> tema;
+    std::cout << "Ingresar la duracion del evento:" << std::endl;
+    std::cin >> duracion;
     // Crear un nuevo evento y lo agrega al vector de eventos
     Evento* nuevoEvento = new Evento(nombre,codigo,duracion,ubicacion,tema);
     eventos.push_back(nuevoEvento);
@@ -71,19 +70,19 @@ Asistente* crearAsistente(std::string nombre,
  * funcion para crear asistente mediante input
 */
 void crearAsistente(vector<Asistente*>& asistentes){
-    string nombre,email,password,ocupacion;
+    std::string nombre,email,password,ocupacion;
     int edad;
-    cout<< "****** Crear Asistente ******" << endl;
-    cout << "Ingresar el nombre del asistente:" << endl;
-    cin >> nombre;
-    cout << "Ingresar el email del asistente:" << endl;
-    cin >> email;
-    cout << "Ingresar la contraseña del asistente:" << endl;
-    cin>> password;
-    cout << "Ingresar la ocupacion del asistente:" << endl;
-    cin>> ocupacion;
-    cout << "Ingresar la edad del asistente:" << endl;
-    cin >> edad;
+    std::cout<< "****** Crear Asistente ******" << std::endl;
+    std::cout << "Ingresar el nombre del asistente:" << std::endl;
+    std::cin >> nombre;
+    std::cout << "Ingresar el email del asistente:" << std::endl;
+    std::cin >> email;
+    std::cout << "Ingresar la contraseña del asistente:" << std::endl;
+    std::cin>> password;
+    std::cout << "Ingresar la ocupacion del asistente:" << std::endl;
+    std::cin>> ocupacion;
+    std::cout << "Ingresar la edad del asistente:" << std::endl;
+    std::cin >> edad;
 
     // Registra un nuevo asistente y lo agrega al vector asistente
     Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
@@ -187,8 +186,20 @@ int leerArchivoAsistentes(std::vector<Asistente*>& asistentes){
 
     // Lee el archivo línea por línea
     while (std::getline(archivo, linea)) {
-        // Procesa cada línea como desees
-        std::cout << linea << std::endl;
+        std::stringstream ss(linea);
+        std::string nombre, password, email, ocupacion;
+        int edad;
+        char comma;
+        if (std::getline(ss, nombre, ',') &&
+            (ss >> edad >> comma) &&
+            std::getline(ss, email , ',') &&
+            std::getline(ss, password, ',') &&
+            std::getline(ss, ocupacion)) {
+            // Crea un objeto Evento con los datos extraídos y lo agrega al vector
+            asistentes.push_back(crearAsistente(nombre,edad,email,password,ocupacion));
+        } else {
+            std::cerr << "Error al analizar la línea: " << linea << std::endl;
+        }
     }
     
     // Cierra el archivo
@@ -199,10 +210,10 @@ int leerArchivoAsistentes(std::vector<Asistente*>& asistentes){
  * funcion para mostrar todos los asistentes registrados
 */
 void listarAsistentes(const vector<Asistente*>& asistentes){
-    cout << "****** Lista de Asistentes ******" << endl;
+    std::cout << "****** Lista de Asistentes ******" << std::endl;
     // Interara sobre el vector de asistente
     for(const auto& asistente: asistentes){
-        cout << asistente -> toString() << endl;
+        std::cout << asistente -> toString() << std::endl;
     }
 }
 
@@ -211,7 +222,7 @@ void listarAsistentes(const vector<Asistente*>& asistentes){
 */
 void listarEvento(const vector<Evento*>& eventos){
     for(const auto& evento: eventos){
-        cout << evento -> toString() << endl;
+        std::cout << evento -> toString() << std::endl;
     }
 }
 
@@ -227,26 +238,26 @@ void CalcularEdad(const vector<Asistente*>& asistentes){
     // calcula la edad si exiten asistentes, si es diferente a vacio.
     if(!asistentes.empty()){
         edadPromedio /= asistentes.size();
-        cout << "Edad promedio de los asistentes: " << edadPromedio << "años" << endl;
+        std::cout << "Edad promedio de los asistentes: " << edadPromedio << "años" << std::endl;
     }else{
-        cout << "No hay asistentes registrados" << endl;
+        std::cout << "No hay asistentes registrados" << std::endl;
     }
 }
 
 
 void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
-    cout << "****** Informe ******" << endl;
+    std::cout << "****** Informe ******" << std::endl;
     //mostra la cantidad de eventos
-    cout << "Cantidad de eventos programados: " <<eventos.size() << endl;
+    std::cout << "Cantidad de eventos programados: " <<eventos.size() << std::endl;
     //mostra la lista de eventos que existen
-    cout << "Lista de eventos programados: "  << endl;
+    std::cout << "Lista de eventos programados: "  << std::endl;
     listarEvento(eventos);
     // mostrar la cantidad de asistentes registrados
-    cout << "Cantidad total de asistentes registrados: " << asistentes.size() << endl;
+    std::cout << "Cantidad total de asistentes registrados: " << asistentes.size() << std::endl;
     // mostrar la edad promedio 
     CalcularEdad(asistentes);
     //mostrar la ocupacion mas comun
-    cout << "Ocupacion mas comun: " << endl;
+    std::cout << "Ocupacion mas comun: " << std::endl;
     
 }
 
@@ -255,22 +266,22 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
 */
 void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& eventos){
     int opcion = 0;
-    cout << "Bienvenido" << endl;
-    cout << "1.Crear eventos" << endl;
-    cout << "2.Registrar asistentes" << endl;
-    cout << "3.Mostrar asistentes" << endl;
-    cout << "4.Generar informe" << endl;
-    cout << "5.salir" << endl;
+    std::cout << "Bienvenido" << std::endl;
+    std::cout << "1.Crear eventos" << std::endl;
+    std::cout << "2.Registrar asistentes" << std::endl;
+    std::cout << "3.Mostrar asistentes" << std::endl;
+    std::cout << "4.Generar informe" << std::endl;
+    std::cout << "5.salir" << std::endl;
 
-    cout << "Ingrese una opcion:" << endl;
-    cin >> opcion;
+    std::cout << "Ingrese una opcion:" << std::endl;
+    std::cin >> opcion;
     
     while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5){
-        cin.clear();
+        std::cin.clear();
 
-        cout << "opcion ingresada no valida" << endl;
-        cout << "Ingrese una opcion:" << endl;
-        cin >> opcion;
+        std::cout << "opcion ingresada no valida" << std::endl;
+        std::cout << "Ingrese una opcion:" << std::endl;
+        std::cin >> opcion;
     }
 
     switch (opcion) {
@@ -281,8 +292,7 @@ void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& 
         //registrarAsistentes(asistentes);
         break;
     case 3:
-        //ListarAsistente(asistentes);
-        listarEvento(eventos);
+        listarAsistentes(asistentes);
         break;
     case 4:
         //informe(eventos,asistentes);
@@ -294,13 +304,35 @@ void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& 
     
 }
 
+/**
+ *  Esta función elimina los objetos apuntados por los punteros en los vectores de asistentes y eventos,
+ * y luego limpia los vectores, dejándolos vacíos.
+*/
+void destructores(std::vector<Asistente*>& asistentes, std::vector<Evento*>& eventos){
+    //libera la memoria de los objetos Evento
+    for( auto& evento: eventos){
+        delete evento;
+    }
+    //limpia el vector de punteros Evento
+    eventos.clear();
+
+    //libera la memoria de los objetos Asistente
+    for( auto& asistente: asistentes){
+        delete asistente;
+    }
+    //limpia el vector de punteros Asistente
+    asistentes.clear();
+}
+
 int main(){
     vector<Evento*> eventos; // Vector para almacenar los eventos creados
     vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
-    //leerArchivoAsistentes(asistentes);
+    leerArchivoAsistentes(asistentes);
     leerArchivoEventos(eventos);
     //Interfaz de usuario
     interfazUsuario(asistentes,eventos);
+    
+    destructores(asistentes,eventos);
     return 0;
 }
 
