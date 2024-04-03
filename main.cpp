@@ -7,6 +7,19 @@
 #include "Asistente.h"
 
 using namespace std;
+/*
+    REQUERIMIENTOS
+    1.- crear eventos
+    2.- registrar asistentes
+    3.- mostrar asistentes
+    4.- leer y crear archivos .txt (leer datos anteriores y guardar datos)
+    5.- Los informes generados podrían incluir datos como:
+    6.- Lista de eventos programados.
+    7.- Lista de asistentes registrados para cada evento.
+    8.- Estadísticas sobre la asistencia a los eventos (por ejemplo, número total de asistentes, asistencia promedio por evento, etc.).
+    9.- Detalles sobre los asistentes (por ejemplo, edad promedio, ocupaciones más comunes, etc.).
+    10.- Información sobre eventos específicos, como la duración, la ubicación y el tema.
+*/
 
 // DECLARACION DE FUNCIONES
 
@@ -14,19 +27,19 @@ using namespace std;
  * funcion que retorna un puntero de la clase evento
 */
 Evento* crearEvento(std::string nombre, 
-                    std::string tipo, 
+                    int codigo, 
                     int duracion, 
                     std::string ubicacion,
                     std::string tema){
-    return new Evento(nombre,tipo,duracion,ubicacion,tema);
+    return new Evento(nombre,codigo,duracion,ubicacion,tema);
 }
 
 /**
  * funcion para crear un evento mediante input
 */
 void crearEvento(vector<Evento*>& eventos){
-    string nombre,codigo,ubicacion,tema;
-    int duracion;
+    string nombre,ubicacion,tema;
+    int codigo,duracion;
     cout<< "****** Crear Evento ******" << endl;
     cout << "Ingresar el nombre del evento:" << endl;
     cin >> nombre;
@@ -43,6 +56,9 @@ void crearEvento(vector<Evento*>& eventos){
     eventos.push_back(nuevoEvento);
 }
 
+/**
+ * funcion que retorna un puntero de la clase asistente
+*/
 Asistente* crearAsistente(std::string nombre,
                           int edad, 
                           std::string email, 
@@ -51,7 +67,32 @@ Asistente* crearAsistente(std::string nombre,
     return new Asistente(nombre,edad,email,password,ocupacion);
 }
 
-//leer archivo txt
+/**
+ * funcion para crear asistente mediante input
+*/
+void crearAsistente(vector<Asistente*>& asistentes){
+    string nombre,email,password,ocupacion;
+    int edad;
+    cout<< "****** Crear Asistente ******" << endl;
+    cout << "Ingresar el nombre del asistente:" << endl;
+    cin >> nombre;
+    cout << "Ingresar el email del asistente:" << endl;
+    cin >> email;
+    cout << "Ingresar la contraseña del asistente:" << endl;
+    cin>> password;
+    cout << "Ingresar la ocupacion del asistente:" << endl;
+    cin>> ocupacion;
+    cout << "Ingresar la edad del asistente:" << endl;
+    cin >> edad;
+
+    // Registra un nuevo asistente y lo agrega al vector asistente
+    Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
+    asistentes.push_back(nuevoAsistente);
+}
+
+/**
+ * funcion para leer archivo eventos
+*/
 int leerArchivoEventos(/*std::vector<Evento> eventos*/){
     // Abre el archivo en modo de lectura
     std::ifstream archivo("Eventos.txt");
@@ -138,38 +179,11 @@ int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
     // Cierra el archivo
     archivo.close();
 }
-// =========== Asistente =============//
-//Asistente registrarAsistente();
 
-
-/*
-    REQUERIMIENTOS
-    1.- crear eventos
-    2.- registrar asistentes
-    3.- mostrar asistentes
-    4.- leer y crear archivos .txt (leer datos anteriores y guardar datos)
-    5.- Los informes generados podrían incluir datos como:
-    6.- Lista de eventos programados.
-    7.- Lista de asistentes registrados para cada evento.
-    8.- Estadísticas sobre la asistencia a los eventos (por ejemplo, número total de asistentes, asistencia promedio por evento, etc.).
-    9.- Detalles sobre los asistentes (por ejemplo, edad promedio, ocupaciones más comunes, etc.).
-    10.- Información sobre eventos específicos, como la duración, la ubicación y el tema.
+/**
+ * Interfaz del usuario
 */
-/*
-    por hacer:
-        agregar const a los metodos getters y a los setters
-        quitar los metodos que no se usaran
-        quitar includes que no se usaran
-*/
-int main(){
-    vector<Evento*> eventos; // Vector para almacenar los eventos creados
-    vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
-  /*
-    /*Evento p1("a","b",2,"c","d");
-    std::cout<<p1.getNombre()<<std::endl;*/
-    /*
-    return 0;
-    //Interfaz de usuario
+void interfazUsuario(){
     int opcion = 0;
     cout << "Bienvenido" << endl;
     cout << "1.Crear eventos" << endl;
@@ -206,33 +220,7 @@ int main(){
         cout << "Saliendo del programa..." << endl;
         break;
     }
-    */
-    int a = leerArchivoEventos();
-    int b = leerArchivoAsistentes();
     
-}
-
-
-/*
-*/
-Asistente *crearAsistente(vector<Asistente*>& asistentes){
-string nombre,email,password,ocupacion;
-int edad;
-cout<< "****** Crear Asistente ******" << endl;
-cout << "Ingresar el nombre del asistente:" << endl;
-cin >> nombre;
-cout << "Ingresar el email del asistente:" << endl;
-cin >> email;
-cout << "Ingresar la contraseña del asistente:" << endl;
-cin>> password;
-cout << "Ingresar la ocupacion del asistente:" << endl;
-cin>> ocupacion;
-cout << "Ingresar la edad del asistente:" << endl;
-cin >> edad;
-
-// Registra un nuevo asistente y lo agrega al vector asistente
-Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
- asistentes.push_back(nuevoAsistente);
 }
 
 void listarAsistentes(const vector<Asistente*>& asistentes){
@@ -279,6 +267,17 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
   cout << "Ocupacion mas comun: " << endl;
   
 }
+
+int main(){
+    vector<Evento*> eventos; // Vector para almacenar los eventos creados
+    vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
+    
+    //Interfaz de usuario
+    interfazUsuario();
+    return 0;
+}
+
+
 
 
 
