@@ -1,7 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include "Evento.h"
 #include "Asistente.h"
@@ -126,8 +128,20 @@ int leerArchivoEventos(std::vector<Evento*> eventos){
 
     // Lee el archivo línea por línea
     while (std::getline(archivo, linea)) {
-        // Procesa cada línea como desees
-        std::cout << linea << std::endl;
+        std::stringstream ss(linea);
+        std::string nombre, ubicacion, tema;
+        int codigo, duracion;
+        char comma;
+        if (std::getline(ss, nombre, ',') &&
+            (ss >> codigo >> comma) &&
+            (ss >> duracion >> comma) &&
+            std::getline(ss, ubicacion, ',') &&
+            std::getline(ss, tema)) {
+            // Crea un objeto Evento con los datos extraídos y lo agrega al vector
+            eventos.push_back(crearEvento(nombre,codigo,duracion,ubicacion,tema));
+        } else {
+            std::cerr << "Error al analizar la línea: " << linea << std::endl;
+        }
     }
     
     // Cierra el archivo
@@ -181,7 +195,7 @@ int leerArchivoAsistentes(std::vector<Asistente*> asistentes){
 /**
  * Interfaz del usuario
 */
-void interfazUsuario(){
+void interfazUsuario(const vector<Asistente*>& asistentes, const vector<Evento*> eventos){
     int opcion = 0;
     cout << "Bienvenido" << endl;
     cout << "1.Crear eventos" << endl;
@@ -203,13 +217,14 @@ void interfazUsuario(){
 
     switch (opcion) {
     case 1:
-       //crearEvento(eventos);
+        //crearEvento(eventos);
         break;
     case 2:
-       //registrarAsistentes(asistentes);
+        //registrarAsistentes(asistentes);
         break;
     case 3:
-       //ListarAsistente(asistentes);
+        //ListarAsistente(asistentes);
+        listarEvento(eventos);
         break;
     case 4:
         //informe(eventos,asistentes);
@@ -281,7 +296,7 @@ int main(){
     vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
     leerArchivoAsistentes(asistentes);
     //Interfaz de usuario
-    interfazUsuario();
+    interfazUsuario(asistentes,eventos);
     return 0;
 }
 
