@@ -22,6 +22,14 @@
     10.- Información sobre eventos específicos, como la duración, la ubicación y el tema.
 */
 
+/*
+    FALTA:
+        ENLAZAR ASISTENTE CON EVENTO
+        CONTROL DE ERRORES
+        ACTUALIZAR Y GUARDAR DATOS REGISTRADOS (modificar archivos txt)
+
+*/
+
 /**
  * funcion que retorna un puntero de la clase evento
 */
@@ -298,7 +306,7 @@ void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& 
         //informe(eventos,asistentes);
         break;
     case 5:
-        cout << "Saliendo del programa..." << endl;
+        std::cout << "Saliendo del programa..." << std::endl;
         break;
     }
     
