@@ -294,7 +294,7 @@ void interfazUsuario(const vector<Asistente*>& asistentes, const vector<Evento*>
 int main(){
     vector<Evento*> eventos; // Vector para almacenar los eventos creados
     vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
-    leerArchivoAsistentes(asistentes);
+    //leerArchivoAsistentes(asistentes);
     leerArchivoEventos(eventos);
     //Interfaz de usuario
     interfazUsuario(asistentes,eventos);
