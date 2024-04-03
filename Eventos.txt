@@ -1,0 +1,10 @@
+Conferencia de Tecnología,101,3,Salón de Conferencias,Tecnología
+Partido de Fútbol,202,5,Estadio,Deportes
+Charla de Ciencia,303,2,Auditorio,Ciencia
+Exposición de Arte,404,4,Galería de Arte,Arte
+Festival de Música,505,6,Parque de la Ciudad,Entretenimiento
+Clase de Yoga,606,1,Gimnasio,Salud
+Tertulia Literaria,707,2,Cafetería,Cultura
+Feria del Libro,808,4,Centro de Convenciones,Literatura
+Proyección de Película,909,3,Cine,Cine
+Cata de Vinos,111,5,Bodega,Gastronomía
