@@ -120,7 +120,7 @@ int leerArchivoEventos(std::vector<Evento*> eventos){
             return 1;
         }
     }
-    /*
+    
     // El archivo está abierto correctamente, ahora puedes leer su contenido
     std::string linea;
 
@@ -129,7 +129,7 @@ int leerArchivoEventos(std::vector<Evento*> eventos){
         // Procesa cada línea como desees
         std::cout << linea << std::endl;
     }
-    */
+    
     // Cierra el archivo
     archivo.close();
     
