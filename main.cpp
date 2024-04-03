@@ -91,9 +91,9 @@ void crearAsistente(vector<Asistente*>& asistentes){
 }
 
 /**
- * funcion para leer archivo eventos
+ * funcion para leer archivo Eventos.txt
 */
-int leerArchivoEventos(std::vector<Evento*> eventos){
+int leerArchivoEventos(std::vector<Evento*>& eventos){
     // Abre el archivo en modo de lectura
     std::ifstream archivo("Eventos.txt");
 
@@ -149,7 +149,10 @@ int leerArchivoEventos(std::vector<Evento*> eventos){
     
 }
 
-int leerArchivoAsistentes(std::vector<Asistente*> asistentes){
+/**
+ * funcion para leer archivo Asistentes.txt
+*/
+int leerArchivoAsistentes(std::vector<Asistente*>& asistentes){
     // Abre el archivo en modo de lectura
     std::ifstream archivo("Asistentes.txt");
 
@@ -250,7 +253,7 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
 /**
  * Interfaz del usuario
 */
-void interfazUsuario(const vector<Asistente*>& asistentes, const vector<Evento*> eventos){
+void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& eventos){
     int opcion = 0;
     cout << "Bienvenido" << endl;
     cout << "1.Crear eventos" << endl;
