@@ -6,16 +6,41 @@
 #include "Evento.h"
 #include "Asistente.h"
 
-//using namespace std;
+using namespace std;
 
 // DECLARACION DE FUNCIONES
-// =========== EVENTO ============//
+
+/**
+ * funcion que retorna un puntero de la clase evento
+*/
 Evento* crearEvento(std::string nombre, 
                     std::string tipo, 
                     int duracion, 
                     std::string ubicacion,
                     std::string tema){
     return new Evento(nombre,tipo,duracion,ubicacion,tema);
+}
+
+/**
+ * funcion para crear un evento mediante input
+*/
+void crearEvento(vector<Evento*>& eventos){
+    string nombre,codigo,ubicacion,tema;
+    int duracion;
+    cout<< "****** Crear Evento ******" << endl;
+    cout << "Ingresar el nombre del evento:" << endl;
+    cin >> nombre;
+    cout << "Ingresar el codigo de evento:" << endl;
+    cin >> codigo;
+    cout << "Ingresar la ubicacion del evento:" << endl;
+    cin>> ubicacion;
+    cout << "Ingresar el tema del evento:" << endl;
+    cin>> tema;
+    cout << "Ingresar la duracion del evento:" << endl;
+    cin >> duracion;
+    // Crear un nuevo evento y lo agrega al vector de eventos
+    Evento* nuevoEvento = new Evento(nombre,codigo,duracion,ubicacion,tema);
+    eventos.push_back(nuevoEvento);
 }
 
 Asistente* crearAsistente(std::string nombre,
@@ -187,25 +212,7 @@ int main(){
     
 }
 
-Evento *crearEvento(vector<Evento*>& eventos){
-string nombre,codigo,ubicacion,tema;
-int duracion;
-cout<< "****** Crear Evento ******" << endl;
-cout << "Ingresar el nombre del evento:" << endl;
-cin >> nombre;
-cout << "Ingresar el codigo de evento:" << endl;
-cin >> codigo;
-cout << "Ingresar la ubicacion del evento:" << endl;
-cin>> ubicacion;
-cout << "Ingresar el tema del evento:" << endl;
-cin>> tema;
-cout << "Ingresar la duracion del evento:" << endl;
-cin >> duracion;
 
-// Crear un nuevo evento y lo agrega al vector de eventos
-Evento* nuevoEvento = new Evento(nombre,codigo,duracion,ubicacion,tema);
-eventos.push_back(nuevoEvento);
-}
 /*
 */
 Asistente *crearAsistente(vector<Asistente*>& asistentes){
@@ -254,6 +261,7 @@ void CalcularEdad(const vector<Asistente*>& asistentes){
     cout << "Edad promedio de los asistentes: " << edadPromedio << "años" << endl;
   }else{
     cout << "No hay asistentes registrados" << endl;
+}
 }
 
 void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){

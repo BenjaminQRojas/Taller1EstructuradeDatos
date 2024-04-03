@@ -1,17 +1,21 @@
 #include "Evento.h"
 
+//constructor
 Evento::Evento(std::string nombre,
-               std::string tipo, 
+               int codigo, 
                int duracion, 
                std::string ubicacion, 
                std::string tema):listAsistente()
 {
     this -> nombre = nombre;
-    this -> tipo = tipo;
+    this -> codigo = codigo;
     this -> duracion = duracion;
     this -> ubicacion = ubicacion;
     this -> tema = tema;
 };
+
+//destructor
+Evento::~Evento(){};
 
 //metodos
 bool Evento::agregarAsistente(Asistente* asistente)
@@ -31,9 +35,9 @@ std::string Evento::getNombre()
     return nombre;
 };
 
-std::string Evento::getTipo()
+int Evento::getCodigo()
 {
-    return tipo;
+    return codigo;
 };
 
 int Evento::getDuracion()
@@ -57,9 +61,9 @@ void Evento::setNombre(std::string nombre)
     this -> nombre = nombre;
 };
 
-void Evento::setTipo(std::string tipo)
+void Evento::setCodigo(int codigo)
 {
-    this -> tipo = tipo;
+    this -> codigo = codigo;
 };
 
 void Evento::setDuracion(int duracion)
@@ -78,5 +82,5 @@ void Evento::setTema(std::string tema)
 //toString()
 std::string Evento:: toString()
 {
-    return "nombre: "+nombre+ ", tipo: " +tipo+ ", duracion: " +duracion ;
+    return "nombre: "+nombre+", codigo: " + std::to_string(codigo) + ", duracion: " +std::to_string(duracion);
 };
