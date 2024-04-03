@@ -61,6 +61,7 @@ void crearEvento(vector<Evento*>& eventos){
     // Crear un nuevo evento y lo agrega al vector de eventos
     Evento* nuevoEvento = new Evento(nombre,codigo,duracion,ubicacion,tema);
     eventos.push_back(nuevoEvento);
+    actualizarArchivoEventos(eventos);
 }
 
 /**
@@ -95,6 +96,7 @@ void crearAsistente(vector<Asistente*>& asistentes){
     // Registra un nuevo asistente y lo agrega al vector asistente
     Asistente *nuevoAsistente = new Asistente(nombre,edad,email,password,ocupacion);       
     asistentes.push_back(nuevoAsistente);
+    actualizarArchivoAsistentes(asistentes);
 }
 
 /**
@@ -214,6 +216,54 @@ int leerArchivoAsistentes(std::vector<Asistente*>& asistentes){
     archivo.close();
 }
 
+// Función para actualizar el archivo de eventos
+void actualizarArchivoEventos(const std::vector<Evento*>& eventos) {
+    // Abre el archivo en modo de escritura
+    std::ofstream archivo("Eventos.txt");
+
+    // Verifica si se pudo abrir correctamente
+    if (!archivo.is_open()) {
+        std::cerr << "Error al abrir el archivo de eventos para escritura." << std::endl;
+        return;
+    }
+
+    // Escribe la información de cada evento en el archivo
+    for (const auto& evento : eventos) {
+        archivo << evento->getNombre() << ","
+                << evento->getCodigo() << ","
+                << evento->getDuracion() << ","
+                << evento->getUbicacion() << ","
+                << evento->getTema() << std::endl;
+    }
+
+    // Cierra el archivo
+    archivo.close();
+}
+
+// Función para actualizar el archivo de asistentes
+void actualizarArchivoAsistentes(const std::vector<Asistente*>& asistentes) {
+    // Abre el archivo en modo de escritura
+    std::ofstream archivo("Asistentes.txt");
+
+    // Verifica si se pudo abrir correctamente
+    if (!archivo.is_open()) {
+        std::cerr << "Error al abrir el archivo de asistentes para escritura." << std::endl;
+        return;
+    }
+
+    // Escribe la información de cada asistente en el archivo
+    for (const auto& asistente : asistentes) {
+        archivo << asistente->getNombre() << ","
+                << asistente->getEdad() << ","
+                << asistente->getEmail() << ","
+                << asistente->getPassword() << ","
+                << asistente->getOcupacion() << std::endl;
+    }
+
+    // Cierra el archivo
+    archivo.close();
+}
+
 /**
  * funcion para mostrar todos los asistentes registrados
 */
@@ -296,6 +346,9 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
     std::cout << "Ocupacion mas comun: " << std::endl;
     ocupacionComun(asistentes);
 }
+
+
+
 
 /**
  * Interfaz del usuario
