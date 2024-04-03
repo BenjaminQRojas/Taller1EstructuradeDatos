@@ -25,12 +25,6 @@ bool Evento::agregarAsistente(Asistente* asistente)
     }
 };
 
-//toString()
-std::string Evento:: toString()
-{
-    return "nombre: "+nombre+ ", tipo: " +tipo+ ", duracion: " +duracion ;
-};
-
 //getters
 std::string Evento::getNombre()
 {
@@ -79,4 +73,10 @@ void Evento::setUbicacion(std::string ubicacion)
 void Evento::setTema(std::string tema)
 {
     this -> tema = tema;
+};
+
+//toString()
+std::string Evento:: toString()
+{
+    return "nombre: "+nombre+ ", tipo: " +tipo+ ", duracion: " +duracion ;
 };
