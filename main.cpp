@@ -21,8 +21,6 @@ using namespace std;
     10.- Información sobre eventos específicos, como la duración, la ubicación y el tema.
 */
 
-// DECLARACION DE FUNCIONES
-
 /**
  * funcion que retorna un puntero de la clase evento
 */
@@ -93,7 +91,7 @@ void crearAsistente(vector<Asistente*>& asistentes){
 /**
  * funcion para leer archivo eventos
 */
-int leerArchivoEventos(/*std::vector<Evento> eventos*/){
+int leerArchivoEventos(std::vector<Evento*> eventos){
     // Abre el archivo en modo de lectura
     std::ifstream archivo("Eventos.txt");
 
@@ -137,7 +135,7 @@ int leerArchivoEventos(/*std::vector<Evento> eventos*/){
     
 }
 
-int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
+int leerArchivoAsistentes(std::vector<Asistente*> asistentes){
     // Abre el archivo en modo de lectura
     std::ifstream archivo("Asistentes.txt");
 
@@ -166,7 +164,7 @@ int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
             return 1;
         }
     }
-    /*
+    
     // El archivo está abierto correctamente, ahora puedes leer su contenido
     std::string linea;
 
@@ -175,7 +173,7 @@ int leerArchivoAsistentes(/*std::vector<Asistente> asistentes*/){
         // Procesa cada línea como desees
         std::cout << linea << std::endl;
     }
-    */
+    
     // Cierra el archivo
     archivo.close();
 }
@@ -281,6 +279,7 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
 int main(){
     vector<Evento*> eventos; // Vector para almacenar los eventos creados
     vector<Asistente*> asistentes; // Vector para almacenar los asistentes registrados
+    leerArchivoAsistentes(asistentes);
     //Interfaz de usuario
     interfazUsuario();
     return 0;

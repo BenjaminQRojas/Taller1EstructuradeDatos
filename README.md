@@ -7,8 +7,8 @@ Integrante 2: Fabricha Francinny Ramirez Araya
 RUT: 20.990.386-5
 Correo Institucional: fabricha.ramirez@alumnos.ucn.cl
 
-
-g++ main.cpp -o main
+g++ Asistente.cpp Eventos.cpp main.cpp -o main
+./main
 
 Objetos creados:
 {
