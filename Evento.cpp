@@ -14,6 +14,10 @@ Evento::Evento(std::string nombre,
     this -> tema = tema;
 };
 
+int getCantidadEvento(){
+  return listarAsistente.size();
+}
+
 //destructor
 Evento::~Evento(){};
 
