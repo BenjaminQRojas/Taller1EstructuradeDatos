@@ -308,7 +308,7 @@ string ocupacionComun(const vector<Asistente*>& asistentes){
         return "No hay asistentes registrados" ;
     }
     //variables
-    String ocupacionComun;
+    std::string ocupacionComun;
     int maxOcurrencias = 0;
     
 //Interamos sobre los asistenes que existan y contamos de forma manual las repeticiones o ocurrencias 
@@ -334,7 +334,7 @@ string ocupacionComun(const vector<Asistente*>& asistentes){
 void EstadisticaAsistenciaXevento(const vector<Evento*>& eventos){
     for(const auto& evento : eventos){
         std:: cout << "Evento: " << evento -> getNombre() << std:: endl;
-        std:: cout << "Cantidad de asistencia: " << evento -> getEventoAsistido() << std:: endl;
+        std:: cout << "Cantidad de asistencia: " << evento -> getCantidadAsistentes() << std:: endl;
         
     }
 }
@@ -348,31 +348,31 @@ void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>&
     std:: cout << "Ingrese el nombre del evento que ira:" << std:: endl;
     std:: cin >> nombreEvento;
     //buscar evento
-    Evento* eventoSeleccionado = "";
+    Evento* eventoSeleccionado = nullptr;
     for(auto& evento: eventos){
         if(evento -> getNombre() == nombreEvento){
             eventoSeleccionado = evento;
             break;
         }
     }
-if(eventoSeleccionado != ""){
-    std:: cout <<"Asistentes disponibles:" << std:: endl;
-    listarAsistentes(asistentes);
-    //vamos a solicitar un asistente por indice porque los nombres se pueden repetir
-    ind indiceAsistente;
-    std:: cout << "Ingrese el indice del asistente que ira al evento elegido con anterioridad: " << std :: endl;
-    std:: cin >> indiceAsistente;
-    //control de error del indice
-    if(indiceAsistente >= 0 && indiceAsistente < asistentes.size()){
-        eventoSeleccionado -> agregarAsistente(asistentes[indiceAsistente]);
-        std:: cout << "Asistente registrado correctamente para el evento." << std:: endl;
+    if(eventoSeleccionado != nullptr){
+        std:: cout <<"Asistentes disponibles:" << std:: endl;
+        listarAsistentes(asistentes);
+        //vamos a solicitar un asistente por indice porque los nombres se pueden repetir
+        int indiceAsistente;
+        std:: cout << "Ingrese el indice del asistente que ira al evento elegido con anterioridad: " << std :: endl;
+        std:: cin >> indiceAsistente;
+        //control de error del indice
+        if(indiceAsistente >= 0 && indiceAsistente < asistentes.size()){
+            eventoSeleccionado -> agregarAsistente(asistentes[indiceAsistente]);
+            std:: cout << "Asistente registrado correctamente para el evento." << std:: endl;
+        }else{
+            std:: cout << "Este indice no existe" << std:: endl;
+        }  
     }else{
-        std:: cout << "Este indice no existe" << std:: endl;
-    }  
-}else{
-    std:: cout << "El evento no existe" << std:: endl;
+        std:: cout << "El evento no existe" << std:: endl;
+    }
 }
-
 
 void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
     std:: cout << "****** Informe ******" << std::endl;
@@ -390,7 +390,7 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
     ocupacionComun(asistentes);
     //mostrar la asistencia por evento
     std:: cout << "Estadistica de asistencia por evento: " << std:: endl;
-    EstadisticaAsistenciaXevento(evento);
+    EstadisticaAsistenciaXevento(eventos);
         
 }
 
@@ -423,7 +423,7 @@ void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& 
         crearEvento(eventos);
         break;
     case 2:
-        registrarAsistentes(asistentes);
+        crearAsistente(asistentes);
         break;
     case 3:
         listarAsistentes(asistentes);
@@ -432,11 +432,11 @@ void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& 
         informe(eventos,asistentes);
         break;
     case 5:
-        eventoAsistido(asisitentes,eventos);
+        eventoAsistido(asistentes,eventos);
         break;
     case 6:
         std::cout << "Saliendo del programa..." << std::endl;
-         break;
+        break;
     } 
 }
 

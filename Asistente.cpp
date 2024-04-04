@@ -41,7 +41,7 @@ std:: string Asistente:: getOcupacion()
     return ocupacion;
 };
 Evento* Asistente:: getEventoAsistido(){
-  return eventoAsistido()
+  return eventoAsistido;
 }
 
 //setters
