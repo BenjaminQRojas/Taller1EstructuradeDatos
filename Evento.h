@@ -24,6 +24,7 @@ class Evento
         ~Evento();
         //metodos
         bool agregarAsistente(Asistente* asistente);
+        int getCantidadAsistentes();
         //getters
         std::string getNombre();
         int getCodigo();
