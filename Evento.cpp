@@ -24,7 +24,7 @@ bool Evento::agregarAsistente(Asistente* asistente)
       //agrega al asistente al vecto asistente del evento
         listAsistente.push_back(asistente);
       // enlazamos el evento actual con el asistente
-        asistente -> setEventoAsistiendo(this);
+        asistente -> setEventoAsistido(this);
         return true; 
     } catch (const std::bad_alloc& e) {
         std::cerr << "Error: No se pudo agregar el asistente debido a la falta de memoria." << std::endl;
