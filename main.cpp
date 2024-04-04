@@ -442,10 +442,10 @@ void interfazUsuario(std::vector<Asistente*>& asistentes, std::vector<Evento*>& 
         listarAsistentes(asistentes);
         break;
     case 4:
-        informe(eventos,asistentes);
+        eventoAsistido(asistentes,eventos);
         break;
     case 5:
-        eventoAsistido(asistentes,eventos);
+         informe(eventos,asistentes);
         break;
     case 6:
         std::cout << "Saliendo del programa..." << std::endl;
