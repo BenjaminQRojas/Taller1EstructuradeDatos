@@ -13,6 +13,7 @@ class Asistente
         std::string email;
         std::string password;
         std::string ocupacion;
+        Evento* eventoAsistido; // puntero al evento que asiste el asistente xd
     public:
         //constructor  
         Asistente(std::string, int, std::string, std::string, std::string);
@@ -24,12 +25,14 @@ class Asistente
         std::string getEmail();
         std::string getPassword();
         std::string getOcupacion();
+        Evento* getEventoAsistiendo();
         //setters
         void setNombre(std::string nombre);
         void setEdad(int edad);
         void setEmail(std::string email);
         void setPassword(std::string password);
         void setOcupacion(std::string ocupacion);
+        void setEventoAsistiendo(Evento* evento);
         //toString
         std::string toString();
 };
