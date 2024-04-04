@@ -25,14 +25,14 @@ class Asistente
         std::string getEmail();
         std::string getPassword();
         std::string getOcupacion();
-        Evento* getEventoAsistiendo();
+        Evento* getEventoAsistido();
         //setters
         void setNombre(std::string nombre);
         void setEdad(int edad);
         void setEmail(std::string email);
         void setPassword(std::string password);
         void setOcupacion(std::string ocupacion);
-        void setEventoAsistiendo(Evento* evento);
+        void setEventoAsistido(Evento* evento);
         //toString
         std::string toString();
 };
