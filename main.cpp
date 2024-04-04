@@ -338,6 +338,17 @@ void EstadisticaAsistenciaXevento(const vector<Evento*>& eventos){
         
     }
 }
+
+void promedioAsistencia(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
+    int TotalAsistidos = 0;
+    for(const auto& evento : eventos){
+        totalAsistentes += evento -> getCantidadAsistentes();
+    }
+    //static_cast convierte la variable en tipo float
+    double asistenciaPromedio = static_cast<double>(TotalAsistidos)/evento.size();
+    return asistenciaPromedio;
+}
+
 //areglar
 void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>& eventos){
     //Mostrar los eventos existentes
@@ -391,7 +402,9 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
     //mostrar la asistencia por evento
     std:: cout << "Estadistica de asistencia por evento: " << std:: endl;
     EstadisticaAsistenciaXevento(eventos);
-        
+    //mostrar el promedio de asistencia
+    std:: cout << "Asistencia promedio por evento: " << std: endl;
+    promedioAsistencia(eventos,asistentes);
 }
 
 /**
