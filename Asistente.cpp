@@ -12,6 +12,7 @@ Asistente::Asistente(std::string nombre,
     this -> email = email;
     this -> password = password;
     this -> ocupacion = ocupacion;
+    this -> eventoAsistido = nullptr;
 };
 
 //destructor
@@ -39,6 +40,9 @@ std:: string Asistente:: getOcupacion()
 {
     return ocupacion;
 };
+Evento* Asistente:: getEventoAsistido(){
+  return eventoAsistido()
+}
 
 //setters
 void Asistente::setNombre(std::string nombre)
@@ -61,6 +65,9 @@ void Asistente::setOcupacion(std::string ocupacion)
 {
     this -> ocupacion = ocupacion;
 };
+void Asistente:: setEventoAsistido(Evento* evento){
+  this -> eventoAsistido = evento;
+}
 
 //toString
 
