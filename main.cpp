@@ -397,7 +397,7 @@ void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>&
         if(indiceAsistente >= 0 && indiceAsistente < asistentes.size()){
             eventoSeleccionado -> agregarAsistente(asistentes[indiceAsistente]);
             //guardar en el archivoAsistenteporEvento
-            guardarAsistentePorEvento(eventoSeleccionado)
+            guardarAsistentePorEvento(eventos);
             std:: cout << "Asistente registrado correctamente para el evento." << std:: endl;
             
         }else{
