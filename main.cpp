@@ -267,10 +267,10 @@ void actualizarArchivoAsistentes(const std::vector<Asistente*>& asistentes) {
 void guardarAsistentePorEvento(const std::vector<Evento*>& eventos){
     std:: ofstream archivo("AsistentesPorEvento.txt");
     if(!archivo.is_open()){
-        std:: cerr << "Error al abrir el archivo << endl;
+        std:: cerr << "Error al abrir el archivo" << endl;
             return;
     }
-    for (const auto& evento : eventos){
+    for(const auto& evento : eventos){
         archivo << evento -> getNombre() << ":";
         const auto& asistentes = evento -> getAsistentes();
         for(size_t = 0; i < asistentes.size(); i++){
@@ -379,7 +379,7 @@ void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>&
     std:: cout << "Ingrese el nombre del evento que ira:" << std:: endl;
     std:: cin >> nombreEvento;
     //buscar evento
-    Evento* eventoSeleccionado = nullptr;
+    Evento* eventoSeleccionado = "";
     for(auto& evento: eventos){
         if(evento -> getNombre() == nombreEvento){
             eventoSeleccionado = evento;
