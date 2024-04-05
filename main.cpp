@@ -263,6 +263,25 @@ void actualizarArchivoAsistentes(const std::vector<Asistente*>& asistentes) {
     // Cierra el archivo
     archivo.close();
 }
+void guardarAsistentePorEvento(const std::vector<Evento*>& eventos){
+    std:: ofstream archivo(" AsistentesPorEvento.txt");
+    if(!archivo.is_open()){
+        std:: cerr << "Error al abrir el archivo << endl;
+            return;
+    }
+    for (const auto& evento : eventos){
+        archivo << evento -> getNombre() << ":";
+        const auto& asistentes = evento -> getAsistentes();
+        for(size_t = 0; i < asistentes.size(); i++){
+            archivo << asistentes[i] -> getNombre();
+            if(i != asistentes.size() -1){
+                archivo << ",";
+            }
+        }
+        archivp << std:: endl;
+    }
+    archivo.close();
+}
 
 /**
  * funcion para mostrar todos los asistentes registrados
@@ -366,7 +385,7 @@ void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>&
             break;
         }
     }
-    if(eventoSeleccionado != nullptr){
+    if(eventoSeleccionado != ""){
         std:: cout <<"Asistentes disponibles:" << std:: endl;
         listarAsistentes(asistentes);
         //vamos a solicitar un asistente por indice porque los nombres se pueden repetir
@@ -376,7 +395,10 @@ void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>&
         //control de error del indice
         if(indiceAsistente >= 0 && indiceAsistente < asistentes.size()){
             eventoSeleccionado -> agregarAsistente(asistentes[indiceAsistente]);
+            //guardar en el archivoAsistenteporEvento
+            guardarAsistentePorEvento(eventoSeleccionado)
             std:: cout << "Asistente registrado correctamente para el evento." << std:: endl;
+            
         }else{
             std:: cout << "Este indice no existe" << std:: endl;
         }  
