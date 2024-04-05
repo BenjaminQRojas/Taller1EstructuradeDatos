@@ -263,8 +263,9 @@ void actualizarArchivoAsistentes(const std::vector<Asistente*>& asistentes) {
     // Cierra el archivo
     archivo.close();
 }
+
 void guardarAsistentePorEvento(const std::vector<Evento*>& eventos){
-    std:: ofstream archivo(" AsistentesPorEvento.txt");
+    std:: ofstream archivo("AsistentesPorEvento.txt");
     if(!archivo.is_open()){
         std:: cerr << "Error al abrir el archivo << endl;
             return;
@@ -278,7 +279,7 @@ void guardarAsistentePorEvento(const std::vector<Evento*>& eventos){
                 archivo << ",";
             }
         }
-        archivp << std:: endl;
+        archivo << std:: endl;
     }
     archivo.close();
 }
