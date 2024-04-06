@@ -62,6 +62,11 @@ std::string Evento::getTema()
     return tema;
 };
 
+std::vector<Asistente*> Evento::getListAsistente()
+{
+    return listAsistente;
+}; 
+
 //setters
 void Evento::setNombre(std::string nombre)
 {

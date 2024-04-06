@@ -8,28 +8,6 @@
 #include "Evento.h"
 #include "Asistente.h"
 
-/*
-    REQUERIMIENTOS
-    1.- crear eventos
-    2.- registrar asistentes
-    3.- mostrar asistentes
-    4.- leer y crear archivos .txt (leer datos anteriores y guardar datos)
-    5.- Los informes generados podrían incluir datos como:
-    6.- Lista de eventos programados.
-    7.- Lista de asistentes registrados para cada evento.
-    8.- Estadísticas sobre la asistencia a los eventos (por ejemplo, número total de asistentes, asistencia promedio por evento, etc.).
-    9.- Detalles sobre los asistentes (por ejemplo, edad promedio, ocupaciones más comunes, etc.).
-    10.- Información sobre eventos específicos, como la duración, la ubicación y el tema.
-*/
-
-/*
-    FALTA:
-        ENLAZAR ASISTENTE CON EVENTO
-        CONTROL DE ERRORES
-        ACTUALIZAR Y GUARDAR DATOS REGISTRADOS (modificar archivos txt)
-
-*/
-
 /**
  * funcion que retorna un puntero de la clase evento
 */
@@ -264,22 +242,22 @@ void actualizarArchivoAsistentes(const std::vector<Asistente*>& asistentes) {
     archivo.close();
 }
 
-void guardarAsistentePorEvento(const std::vector<Evento*>& eventos){
-    std:: ofstream archivo("AsistentesPorEvento.txt");
-    if(!archivo.is_open()){
-        std:: cerr << "Error al abrir el archivo" << endl;
-            return;
+void guardarAsistentePorEvento(const std::vector<Evento*>& eventos) {
+    std::ofstream archivo("AsistentesPorEvento.txt");
+    if (!archivo.is_open()) {
+        std::cerr << "Error al abrir el archivo" << std::endl;
+        return;
     }
-    for(const auto& evento : eventos){
-        archivo << evento -> getNombre() << ":";
-        const auto& asistentes = evento -> getAsistentes();
-        for(size_t = 0; i < asistentes.size(); i++){
-            archivo << asistentes[i] -> getNombre();
-            if(i != asistentes.size() -1){
-                archivo << ",";
+    for (const auto& evento : eventos) {
+        archivo << evento->getNombre() << ": ";
+        const auto& asistentes = evento ->getListAsistente();
+        for (size_t i = 0; i < asistentes.size(); i++) {
+            archivo << asistentes[i]->getNombre();
+            if (i != asistentes.size() - 1) {
+                archivo << ", ";
             }
         }
-        archivo << std:: endl;
+        archivo << std::endl;
     }
     archivo.close();
 }
@@ -359,13 +337,13 @@ void EstadisticaAsistenciaXevento(const vector<Evento*>& eventos){
     }
 }
 
-void promedioAsistencia(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
-    int TotalAsistidos = 0;
+double promedioAsistencia(const vector<Evento*>& eventos, const vector<Asistente*>& asistentes){
+    int totalAsistidos = 0;
     for(const auto& evento : eventos){
-        totalAsistentes += evento -> getCantidadAsistentes();
+        totalAsistidos += evento -> getCantidadAsistentes();
     }
     //static_cast convierte la variable en tipo float
-    double asistenciaPromedio = static_cast<double>(TotalAsistidos)/evento.size();
+    double asistenciaPromedio = static_cast<double>(totalAsistidos)/eventos.size();
     return asistenciaPromedio;
 }
 
@@ -379,14 +357,14 @@ void eventoAsistido(const vector<Asistente*>& asistentes, const vector<Evento*>&
     std:: cout << "Ingrese el nombre del evento que ira:" << std:: endl;
     std:: cin >> nombreEvento;
     //buscar evento
-    Evento* eventoSeleccionado = "";
+    Evento* eventoSeleccionado = nullptr;
     for(auto& evento: eventos){
         if(evento -> getNombre() == nombreEvento){
             eventoSeleccionado = evento;
             break;
         }
     }
-    if(eventoSeleccionado != ""){
+    if(eventoSeleccionado != nullptr){
         std:: cout <<"Asistentes disponibles:" << std:: endl;
         listarAsistentes(asistentes);
         //vamos a solicitar un asistente por indice porque los nombres se pueden repetir
@@ -426,7 +404,7 @@ void informe(const vector<Evento*>& eventos, const vector<Asistente*>& asistente
     std:: cout << "Estadistica de asistencia por evento: " << std:: endl;
     EstadisticaAsistenciaXevento(eventos);
     //mostrar el promedio de asistencia
-    std:: cout << "Asistencia promedio por evento: " << std: endl;
+    std:: cout << "Asistencia promedio por evento: " << std::endl;
     promedioAsistencia(eventos,asistentes);
 }
 

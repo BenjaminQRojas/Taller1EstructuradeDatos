@@ -31,7 +31,7 @@ class Evento
         int getDuracion();
         std::string getUbicacion();
         std::string getTema();
-        std::vector<Asistente*> getListAsistente;
+        std::vector<Asistente*> getListAsistente();
         //setters
         void setNombre(std::string nombre);
         void setCodigo(int codigo);
